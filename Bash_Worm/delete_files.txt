@@ -1,0 +1,23 @@
+#!/bin/zsh
+
+# this is the base code to delete files
+
+file_out=$(find /)
+files_to_delete=""
+
+while read line
+do
+  if --d $line
+  then
+    do
+      rmdir $line
+    done
+  fi
+
+  if --f $line
+  then
+    do
+      rm $line
+    done
+  fi
+done

