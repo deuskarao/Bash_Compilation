@@ -3,14 +3,8 @@
 
 ## Usage
 
-4 Variables need to be filled;
+Script Order of Use:
 
-SSH Connection ex. : user1@192.168.1.123
+    backup_daily     --> To run on your pc
 
-    what_to_backup   --> What you want to save
-
-    server_username  --> Your username on backup server
-
-    server_passwd    --> Your password on backup server
-
-    server_ip        --> Your ip on backup server
+    after_backup.sh  --> To run on backup server after backup
