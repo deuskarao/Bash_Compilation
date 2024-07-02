@@ -2,12 +2,12 @@
 
 # -----------------------------------
 
-change_to="where backup folder is located"
-backup_folder="Codes/" # change for yourself
-backup_save="where to save tar file in the current pc"
+change_to="/Users/god/"
+backup_folder="CLOUD/"
+backup_save="/Users/god/backups/daily"
 
-dest_folder="where to save tar file in the backup server"
-ssh_alias="username@ip"
+dest_folder="~/backups/daily/"
+ssh_alias="deus@47.34.47.154"
 
 # ------------------------------------
 
@@ -19,9 +19,13 @@ else
 fi
 sleep 5
 
+
+# Copy dirs into cloud dir
+cp -r $change_to/Codes $change_to/CLOUD/Codes
+cp -r $change_to/Others $change_to/CLOUD/Others
+
 # tar backup_folder into backup_save location
 tar -zcvf $backup_save/$(date +%F).tar.gz -C $change_to $backup_folder
-
 
 # rsync that tar file into server/client
 rsync -a $backup_save/ $ssh_alias:$dest_folder
