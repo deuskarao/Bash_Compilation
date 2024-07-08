@@ -61,8 +61,8 @@ function main(){
         tree $change_to/CLOUD > $tree_f
         echo -e "\n" >> $tree_f
 
-        size= $(du -sh $change_to/CLOUD | awk '{print $1}')
-        echo -e "Size:     $size \n" >> $tree_f
+        size=$(du -sh $change_to/CLOUD | awk '{print $1}')
+        echo -e "Size:     $(du -sh $change_to/CLOUD | awk '{print $1}')" >> $tree_f
 
         $file_c $change_to/CLOUD >> $tree_f
 
