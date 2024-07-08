@@ -16,7 +16,7 @@ function main(){
     file_c="$change_to/file_detail" # c exe to get details of a folder/file
 
     dest_folder="~/backups/daily/"
-    ssh_alias="deus@47.34.47.154"
+    ssh_alias="username@ip"
 
     # ------------------------------------
 
