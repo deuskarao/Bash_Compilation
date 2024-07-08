@@ -16,7 +16,7 @@ function main(){
     file_c="$change_to/file_detail" # c exe to get details of a folder/file
 
     dest_folder="~/backups/daily/"
-    ssh_alias="username@ip"
+    ssh_alias="deus@47.34.47.154"
 
     # ------------------------------------
 
@@ -40,8 +40,8 @@ function main(){
     printf " \e[1;45mSCRIPT RUNNING! \e[0m\n" "%q\n"
 
     # Copy dirs into cloud dir
-    cp -r $change_to/Codes $change_to/CLOUD/Codes > $(date +%F)_backup.log 2>&1
-    cp -r $change_to/Others $change_to/CLOUD/Others >> $(date +%F)_backup.log 2>&1
+    cp -r $change_to/Codes $change_to/CLOUD/Codes > $change_to/$(date +%F)_backup.log 2>&1
+    cp -r $change_to/Others $change_to/CLOUD/Others >> $change_to/$(date +%F)_backup.log 2>&1
 
     # tar backup_folder into backup_save location
     tar -zcvf $backup_save/$(date +%F).tar.gz -C $change_to $backup_folder >> $(date +%F)_backup.log 2>&1
@@ -56,13 +56,13 @@ function main(){
 
     # Exit
     if [ "$tar_err" == "0" ] && [ "$sync_err" == "0" ]; then
-        printf " \e[1;42mBackup Done \e[0m\n" "%q\n"
+        printf " \e[1;42mBackup Done \e[0m\n"
 
         tree $change_to/CLOUD > $tree_f
-        printf "%q\n" >> $tree_f
+        echo -e "\n" >> $tree_f
 
-        size= du -sh $change_to/CLOUD | awk '{print $1}'
-        printf "Size:     $size" "%q\n" >> $tree_f
+        size= $(du -sh $change_to/CLOUD | awk '{print $1}')
+        echo -e "Size:     $size \n" >> $tree_f
 
         $file_c $change_to/CLOUD >> $tree_f
 
